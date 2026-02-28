@@ -1,4 +1,5 @@
 package org.genericsWithDiverseParameters;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -6,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class GenericMethodsTest {
     private GenericMethods genericMethods;
     private ByteArrayOutputStream outputStream;
@@ -42,4 +44,37 @@ public class GenericMethodsTest {
         assertTrue(output.contains("Person{name='Carlos', surname='López', age=35}"));
     }
 
+    @Test
+    void testPartialGenericSecondArgumentMustBeString() {
+        Person person = new Person("Adriana", "Villarroel", 27);
+
+        genericMethods.printElementsPartialGeneric(person, "Barcelona", 1998);
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Person{name='Adriana', surname='Villarroel', age=27}"));
+        assertTrue(output.contains("Barcelona"));
+        assertTrue(output.contains("1998"));
+    }
+
+    @Test
+    void testPartialGenericWithNumberAndBoolean() {
+        genericMethods.printElementsPartialGeneric(100, "Hello", true);
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("100"));
+        assertTrue(output.contains("Hello"));
+        assertTrue(output.contains("true"));
+    }
+
+    @Test
+    void testPartialGenericWithDoubleAndPerson() {
+        Person person = new Person("Carlos", "López", 35);
+
+        genericMethods.printElementsPartialGeneric(3.14, "Madrid", person);
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("3.14"));
+        assertTrue(output.contains("Madrid"));
+        assertTrue(output.contains("Person{name='Carlos', surname='López', age=35}"));
+    }
 }
