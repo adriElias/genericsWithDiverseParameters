@@ -38,11 +38,6 @@ Adapt the method to accept variable number of generic arguments (`printAll(T... 
 
 ## Project Structure
 ```text
-src/
-├── Person.java
-├── GenericMethods.java
-└── Main.java 
-
 genericsWithDiverseParameters/
 ├── pom.xml
 └── src/
