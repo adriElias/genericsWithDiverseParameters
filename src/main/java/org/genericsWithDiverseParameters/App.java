@@ -15,5 +15,11 @@ public class App {
         genericMethods.printElementsPartialGeneric(100, "Hello", true);
         genericMethods.printElementsPartialGeneric(3.14, "Madrid", person);
 
+        System.out.println("--- Level 2, exercise 2 ---");
+
+        genericMethods.printAll("Hello", "World", "!");
+        genericMethods.printAll(1, 2, 3, 4, 5);
+        genericMethods.printAll(person, "Bolivia", 1998, "Barcelona", 2016);
+
     }
 }
