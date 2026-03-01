@@ -77,4 +77,38 @@ public class GenericMethodsTest {
         assertTrue(output.contains("Madrid"));
         assertTrue(output.contains("Person{name='Carlos', surname='López', age=35}"));
     }
+
+    @Test
+    void testPrintAllWithThreeStrings() {
+        genericMethods.printAll("Hello", "World", "!");
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Hello"));
+        assertTrue(output.contains("World"));
+        assertTrue(output.contains("!"));
+    }
+
+    @Test
+    void testPrintAllWithFiveIntegers() {
+        genericMethods.printAll(1, 2, 3, 4, 5);
+
+        String output = outputStream.toString();
+        for (int i = 1; i <= 5; i++) {
+            assertTrue(output.contains(String.valueOf(i)));
+        }
+    }
+
+    @Test
+    void testPrintAllWithMixedTypes() {
+        Person person = new Person("Adriana", "Villarroel", 27);
+
+        genericMethods.printAll(person, "Bolivia", 1998, "Barcelona", 2016);
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Person{name='Adriana', surname='Villarroel', age=27}"));
+        assertTrue(output.contains("Bolivia"));
+        assertTrue(output.contains("1998"));
+        assertTrue(output.contains("Barcelona"));
+        assertTrue(output.contains("2016"));
+    }
 }
